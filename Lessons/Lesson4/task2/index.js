@@ -1,11 +1,11 @@
-const m = 10;
-const n = 20;
+const m = 8;
+const n = 18;
 let result = 1;
-
+let a = m;
 
 do {
-    if (m % 2 != 0) {
-        result *= m;
+    if (a % 2 != 0) {
+        result *= a;
     }
     a++
-} while (m <= n);
+} while (a <= n);
