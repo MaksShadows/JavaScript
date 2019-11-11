@@ -1,14 +1,3 @@
-const getCustomersList = obj => {
-
-  const copyObj = JSON.parse(JSON.stringify(obj));
-  const arrWithObj = Object.values(copyObj);
-  const objWithKey = Object.keys(copyObj);
-
-
-  for (let i = 0; i < arrWithObj.length; i++) {
-      arrWithObj[i].id = objWithKey[i];
-  }
-
-
-  return arrWithObj.sort((a, b) => a.age > b.age ? 1 : -1);
-}
+const getCustomersList = obj => Object.entries(obj)
+    .map(elem => ({id: elem[0], ...obj[elem[0]]}))
+    .sort((elem1, elem2) => elem1.age - elem2.age);
