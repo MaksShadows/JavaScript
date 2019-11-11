@@ -1,9 +1,9 @@
-const getFiniteNumbers = array => array.filter(arr => Number.isFinite(arr));
+const getFiniteNumbers = array => array.filter(arg => Number.isFinite(arg));
 
-const getFiniteNumbersV2 = array => array.filter(arr => isFinite(arr));
+const getFiniteNumbersV2 = array => array.filter(arg => isFinite(arg));
 
-const getNaN = array => array.filter(arr => Number.isNaN(arr));
+const getNaN = array => array.filter(arg => Number.isNaN(arg));
 
-const getNaNV2 = array => array.filter(arr => isNaN(arr));
+const getNaNV2 = array => array.filter(arg => isNaN(arg));
 
  
