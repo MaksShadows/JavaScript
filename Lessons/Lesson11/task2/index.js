@@ -8,3 +8,4 @@ const sortContacts = (contactsArray, isAsc = true) => {
       }
   });
 }
+
