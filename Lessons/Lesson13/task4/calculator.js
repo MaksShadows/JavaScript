@@ -18,6 +18,5 @@ export const calc = expression => {
           result = a / b;
           break;
   }
-
   return `${expression} = ${result}`
 }
