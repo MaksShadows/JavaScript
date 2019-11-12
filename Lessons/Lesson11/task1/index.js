@@ -1,4 +1,4 @@
-const splitText = (text, len) => {
+const splitText = (text, len =10) => {
 
   if (typeof text !== 'string') return null;
 
