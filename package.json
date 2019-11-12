@@ -1,5 +1,5 @@
 {
-  "name": "JavaScript",
+  "name": "javascript",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/MaksShadows/JavaScript/issues"
   },
-  "homepage": "https://github.com/MaksShadows/JavaScript#readme"
+  "homepage": "https://github.com/MaksShadows/JavaScript#readme",
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1"
+  }
 }
