@@ -13,7 +13,7 @@ it('should be 0 if a >= b', () => {
 });
 
 it('should get 0 argument', () => {
-    const result = findDivCount(0);
+    const result = findDivCount(0,0,0);
 
-    expect(result).toEqual(null);
+    expect(result).toEqual(0);
 });

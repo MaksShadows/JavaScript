@@ -1,9 +1,9 @@
 import { getSum } from './index';
 
-it('should get functional n', () => {
-    const result = getSum(8);
+it('should get functional other arg', () => {
+    const result = getSum(m);
 
-    expect(result).toEqual(8);
+    expect(result).toEqual(null);
 });
 
 it('should get not functional', () => {
@@ -12,7 +12,7 @@ it('should get not functional', () => {
     expect(result).toEqual(null);
 });
 
-it('should get zero', () => {
+it('should get n > 0', () => {
     const result = getSum(0);
 
     expect(result).toEqual(null);
