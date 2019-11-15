@@ -6,7 +6,7 @@ it('should get result object', () => {
     expect(result).toEqual({ 'John Doe': 19, 'Bob': 18 });
 });
 
-it('should get result object', () => {
+it('should get result object arg1 and arg2', () => {
   const result = getAdults({ 'John Doe': 19, 'Tom': 17, 'Bob': 18 });
   
   expect(result).toEqual({});
