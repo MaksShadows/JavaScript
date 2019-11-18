@@ -81,4 +81,4 @@ it('should get type === "error"', () => {
     
     expect(type).toEqual('error');
 })
-© 2019 GitHub, Inc.
+
