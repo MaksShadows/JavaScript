@@ -1,35 +1,84 @@
 import { createLogger } from './index';
 
-it('should be array', () => {
-    const log1 = createLogger();
+it('should get []', () => {
+    const logger = createLogger();
+    const logs = logger.getRecords();
 
-    log1.warn('Are you Andrei?');
-    log1.error('Oops, we think that you are not Andrei');
-    log1.log('Sorry, we made a mistake, YOU are ANDREI!!!');
+    expect(logs).toEqual([]);
+})
 
-    const types = Array.isArray(log1.getRecords());
+it('should get []', () => {
+    const logger = createLogger();
+    logger.warn('warning');
+    logger.log('log message');
+    const logs = logger.getRecords('error');
 
-    expect(types).toEqual(true);
-});
+    expect(logs).toEqual([]);
+})
 
-it('should be empty array', () => {
-    const log1 = createLogger();
+it('should get []', () => {
+    const logger = createLogger();
+    logger.warn('warning');
+    logger.error('error message');
+    const logs = logger.getRecords('log');
 
-    log1.warn('Are you Andrei?');
-    log1.error('Oops, we think that you are not Andrei');
+    expect(logs).toEqual([]);
+})
 
-    const result = log1.getRecords('log');
+it('should get []', () => {
+    const logger = createLogger();
+    logger.log('log message');
+    logger.error('error message');
+    const logs = logger.getRecords('warn');
 
-    expect(result).toEqual([]);
-});
+    expect(logs).toEqual([]);
+})
 
-it('should be array with type warn', () => {
-    const log1 = createLogger();
+it('should get message === "warning"', () => {
+    const logger = createLogger();
+    logger.warn('warning');
+    const message = logger.getRecords('warn')[0].message;
+    
+    expect(message).toEqual('warning');
+})
 
-    log1.warn('Are you Andrei?');
-    log1.error('Oops, we think that you are not Andrei');
+it('should get type === "warn"', () => {
+    const logger = createLogger();
+    logger.warn('warning');
+    const type = logger.getRecords('warn')[0].type;
+    
+    expect(type).toEqual('warn');
+})
 
-    const result = log1.getRecords('warn')[0].type;
+it('should get message === "log"', () => {
+    const logger = createLogger();
+    logger.log('log message');
+    const message = logger.getRecords('log')[0].message;
+    
+    expect(message).toEqual('log message');
+})
 
-    expect(result).toEqual('warn');
-});
+it('should get type === "log"', () => {
+    const logger = createLogger();
+    logger.log('log message');
+    const type = logger.getRecords('log')[0].type;
+    
+    expect(type).toEqual('log');
+})
+
+it('should get message === "error"', () => {
+    const logger = createLogger();
+    logger.error('error message');
+    const message = logger.getRecords('error')[0].message;
+    
+    expect(message).toEqual('error message');
+})
+
+it('should get type === "error"', () => {
+    const logger = createLogger();
+    logger.error('error message');
+    const type = logger.getRecords('error')[0].type;
+    
+    expect(type).toEqual('error');
+})
+© 2019 GitHub, Inc.
