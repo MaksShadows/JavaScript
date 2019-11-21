@@ -31,8 +31,11 @@ export const createLogger = () => {
         },
 
         getRecords: type => {
-            const resultArray = type !== undefined ? result.filter(el => el.type === type): result;
-            return resultArray.sort((a, b) => b.dateTime.getTime() - a.dateTime.getTime());
+            if (type == undefined) {
+                return result.sort((a, b) => b.dateTime - a.dateTime);
+            } else {
+                return result.filter(i => i.type == type)
+            }
         },
     }
 };
