@@ -14,7 +14,7 @@ const timer = {
       }, 5000);
   },
   stopTimer() {
-      clearInterval(this.clearIntervalID);
+      timer(this.timer);
   },
   resetTimer() {
       this.minsPassed = 0;
