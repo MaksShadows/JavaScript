@@ -5,8 +5,8 @@ const user = {
       return this.firstName + ' ' + this.lastName;
   },
   setFullName(fullName) {
-      this.firstName = fullName.split(' ');
-      this.lastName = fullName.split(' ');
+      this.firstName = fullName.split(' ')[0];
+      this.lastName = fullName.split(' ')[1];
   }
 };
 
