@@ -24,8 +24,15 @@ class UserRepository {
     };
 
     get users(){
-        return `${this.id} ${this.name} ${this.sessionId}`;
+        return  this._id;
     }
+    get users(){
+        return this._name;
+    }
+    get users(){
+        return this._sessionId;
+    }
+
 
     getUserNames() {
         return this._users.map( ({ _name}) => _name);
