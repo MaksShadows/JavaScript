@@ -5,9 +5,7 @@
         this._sessionId = `${sessionId}`;
     };
 
-    get Users(){
-        return `${this.id} ${this.name} ${this.sessionId}`;
-    }
+  
 };
 
 
@@ -30,7 +28,7 @@ class UserRepository {
     };
 
     getUserNameById(userId) {
-        let userName = this._users.find(i => i._id === userId)
+        let userName = this._users.find( ({ _id})  => _id === userId)
         return userName === undefined ? [] : userName._name ;
     };
 };
