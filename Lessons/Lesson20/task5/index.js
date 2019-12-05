@@ -24,7 +24,7 @@ class UserRepository {
     };
 
     get users(){
-        return `${id} ${name} ${sessionId}`;
+        return `${this.id} ${this.name} ${this.sessionId}`;
     }
 
     getUserNames() {
