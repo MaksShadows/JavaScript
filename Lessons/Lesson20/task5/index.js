@@ -20,15 +20,15 @@ class UserRepository {
     }
 
     getUserNames() {
-        return this._users.map( () => _name);
+        return this._users.map( ({ _name}) => _name);
     };
 
     getUserIds() {
-        return this._users.map( () => _id);
+        return this._users.map( ({ _id}) => _id);
     };
 
     getUserNameById(userId) {
-        let userName = this._users.find( ( )  => _id === userId)
+        let userName = this._users.find( ({ _id})  => _id === userId)
         return userName === undefined ? [] : userName._name ;
     };
 };
