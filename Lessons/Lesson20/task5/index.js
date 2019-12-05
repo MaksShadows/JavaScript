@@ -12,10 +12,10 @@ class UserRepository {
     }
 
     getUserNames() {
-        return this._users.map(  _i => i._name)
+        return this._users.map( ({_name}) => _name)
     };
     getUserIds() {
-        return this._users.map( _i => i._id)
+        return this._users.map( ({_id}) => _id)
     };
     getUserNameById(userId) {
         let userName = this._users.find(i => i._id === userId)
