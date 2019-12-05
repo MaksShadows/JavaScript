@@ -24,13 +24,7 @@ class UserRepository {
     };
 
     get users () {
-        return this._id;
-    }
-    get users () {
-        return  this._name;
-    }
-    get users () {
-        return this._sessionId;
+        return this.users;
     }
 
     getUserNames() {
