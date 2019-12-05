@@ -12,9 +12,7 @@ class UserRepository {
     }
 
     getUserNames() {
-        return this._users.map( name => {
-            return name._name;
-        })
+        return this._users.map( ({ _name}) => _name)
     };
     getUserIds() {
         return this._users.map( id => id._id)
