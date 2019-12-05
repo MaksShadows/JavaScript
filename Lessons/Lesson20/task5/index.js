@@ -17,9 +17,9 @@ class UserRepository {
     getUserIds() {
         return this._users.map(i => i._id)
     };
-    getUserNameById(userID) {
-        let userName = this._users.find(i => i._id === userID)
-        return userName === undefined ? userName._name : [];
+    getUserNameById(userId) {
+        let userName = this._users.find(i => i._id === userId)
+        return userName === undefined ? [] : userName._name ;
     };
 }
 
