@@ -5,8 +5,8 @@
         this._sessionId = `${sessionId}`;
     };
 
-    get users(){
-        return `${id} ${name} ${sessionId}`;
+    get Users(){
+        return `${this.id} ${this.name} ${this.sessionId}`;
     }
 };
 
