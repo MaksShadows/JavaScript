@@ -8,14 +8,14 @@ class User {
 
 class UserRepository {
     constructor(arr) {
-        this._users = Object.freeze(arr);;
+        this._arr = Object.freeze(arr);;
     }
 
     getUserNames() {
-        return this._users.map(i => i._name)
+        return this._arr.map(i => i._name)
     };
     getUserIds() {
-        return this._users.map(i => i._id)
+        return this._arr.map(i => i._id)
     };
     getUserNameById(userId) {
         let userName = this._users.find(i => i._id === userId)
