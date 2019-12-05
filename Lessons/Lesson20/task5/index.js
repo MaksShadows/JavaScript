@@ -4,7 +4,12 @@
         this._name = `${name}`;
         this._sessionId = `${sessionId}`;
     };
+
+    get User(){
+        return `${_id} ${_name} ${_sessionId}`;
+    }
 };
+
 
 
 class UserRepository {
