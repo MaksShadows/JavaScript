@@ -5,7 +5,7 @@
         this._sessionId = `${sessionId}`;
     };
 
-    get User(){
+    get users(){
         return `${_id} ${_name} ${_sessionId}`;
     }
 };
