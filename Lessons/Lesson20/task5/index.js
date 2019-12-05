@@ -1,8 +1,8 @@
   class User {
     constructor(id, name, sessionId) {
-        this._id = `${_id}`;
-        this._name = `${_name}`;
-        this._sessionId = `${_sessionId}`;
+        this._id = `${id}`;
+        this._name = `${name}`;
+        this._sessionId = `${sessionId}`;
     };
 };
 
