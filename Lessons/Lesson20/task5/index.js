@@ -24,7 +24,7 @@ class UserRepository {
     };
 
     get users () {
-        return this.users;
+        return users;
     }
 
     getUserNames() {
