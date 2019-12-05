@@ -23,8 +23,8 @@ class UserRepository {
         this._users = Object.freeze(users);
     };
 
-    get  UserRepository () {
-        return users  ;
+    get users () {
+        return this._users ;
     }
 
     getUserNames() {
