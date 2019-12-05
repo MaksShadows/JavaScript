@@ -24,7 +24,7 @@ class UserRepository {
     };
 
     get users () {
-        return User;
+        return id,name, sessionId;
     }
 
     getUserNames() {
