@@ -10,14 +10,19 @@
 class UserRepository {
     constructor(users) {
         this._users = Object.freeze(users);
+
     };
 
+    get users(){
+        return `${id} ${name} ${sessionId}`;
+    }
+
     getUserNames() {
-        return this._users.map( ({_name}) => _name);
+        return this._users.map( i => i._name);
     };
 
     getUserIds() {
-        return this._users.map( ({ _id}) => _id);
+        return this._users.map( i => i._id);
     };
 
     getUserNameById(userId) {
