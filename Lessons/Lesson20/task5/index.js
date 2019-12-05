@@ -1,8 +1,8 @@
   class User {
     constructor(id, name, sessionId) {
-        this._id = `${id}`;
-        this._name = `${name}`;
-        this._sessionId = `${sessionId}`;
+        this._id =  id;
+        this._name = name;
+        this._sessionId = sessionId;
     };
 };
 
@@ -12,16 +12,15 @@ class UserRepository {
         this._users = Object.freeze(users);
     };
 
-    getUserNames() {
-        return this._users.map(({ _name}) => _name);
-
+    get UserNames() {
+        return this._users.map( ({_name}) => _name);
     };
 
-    getUserIds() {
+    get UserIds() {
         return this._users.map( ({ _id}) => _id);
     };
 
-    getUserNameById(userId) {
+    get UserNameById(userId) {
         let userName = this._users.find(i => i._id === userId)
         return userName === undefined ? [] : userName._name ;
     };
