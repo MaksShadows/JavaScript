@@ -6,15 +6,14 @@
     };
     get id(){
         this._id = id;
-        return id;
+        
     }
     get name (){
         this._name = name;
-        return name;
+        
     }
     get sessionId(){
         this._sessionId = sessionId;
-        return sessionId ;
     }
 };
 
