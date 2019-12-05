@@ -11,8 +11,8 @@
 
 
 class UserRepository {
-    constructor(arr) {
-        this._users = Object.freeze(arr);
+    constructor(users) {
+        this._users = Object.freeze(users);
     };
 
     get users(){
@@ -20,15 +20,15 @@ class UserRepository {
     }
 
     getUserNames() {
-        return this._users.map( ({ _name}) => _name);
+        return this._users.map( () => _name);
     };
 
     getUserIds() {
-        return this._users.map( ({ _id}) => _id);
+        return this._users.map( () => _id);
     };
 
     getUserNameById(userId) {
-        let userName = this._users.find( ({ _id})  => _id === userId)
+        let userName = this._users.find( ()  => _id === userId)
         return userName === undefined ? [] : userName._name ;
     };
 };
