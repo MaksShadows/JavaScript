@@ -5,15 +5,14 @@
         this._sessionId = sessionId;
     };
     get id(){
-        this._id = id;
-        
+       return this._id ;
     }
     get name (){
-        this._name = name;
+       return this._name ;
         
     }
     get sessionId(){
-        this._sessionId = sessionId;
+        return this._sessionId;
     }
 };
 
