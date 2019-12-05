@@ -1,9 +1,18 @@
   class User {
     constructor(id, name, sessionId) {
-        this.#id = `${id}`;
-        this.#name = `${name}`;
-        this.#sessionId = `${sessionId}`;
+        this._id = id;
+        this._name = name;
+        this._sessionId = sessionId;
     };
+    get id(){
+        return this._id = id;
+    }
+    get name(){
+        return this._name = name;
+    }
+    get sessionId(){
+        return this._sessionId = sessionId;
+    }
 };
 
 
@@ -14,7 +23,7 @@ class UserRepository {
     };
 
     get users(){
-        return `${_id} ${_name} ${_sessionId}`;
+        return `${id} ${name} ${sessionId}`;
     }
 
     getUserNames() {
