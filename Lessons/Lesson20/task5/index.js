@@ -4,13 +4,16 @@
         this._name = name;
         this._sessionId = sessionId;
     };
-    get value(){
+    get id(){
+        this._id = id;
         return id;
     }
-    get value(){
+    get name (){
+        this._name = name;
         return name;
     }
-    get value(){
+    get sessionId(){
+        this._sessionId = sessionId;
         return sessionId ;
     }
 };
