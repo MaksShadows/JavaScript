@@ -6,7 +6,7 @@
     };
 
     get users(){
-        return `${_id} ${_name} ${_sessionId}`;
+        return `${id} ${name} ${sessionId}`;
     }
 };
 
