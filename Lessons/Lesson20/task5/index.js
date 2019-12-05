@@ -8,9 +8,8 @@
 
 
 class UserRepository {
-    constructor(users) {
-        this._users = Object.freeze(users);
-
+    constructor(arr) {
+        this._users = Object.freeze(arr);
     };
 
     get users(){
