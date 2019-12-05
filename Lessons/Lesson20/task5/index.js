@@ -23,9 +23,16 @@ class UserRepository {
         this._users = Object.freeze(users);
     };
 
-    get users(){
-        return `${this.id} ${this.name} ${this.sessionId}`;
-    }
+    get id(){
+        return this._id ;
+     }
+     get name (){
+        return this._name ;
+         
+     }
+     get sessionId(){
+         return this._sessionId;
+     }
 
     getUserNames() {
         return this._users.map( ({ _name}) => _name);
