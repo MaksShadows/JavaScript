@@ -12,15 +12,15 @@ class UserRepository {
         this._users = Object.freeze(users);
     };
 
-    get UserNames() {
+    getUserNames() {
         return this._users.map( ({_name}) => _name);
     };
 
-    get UserIds() {
+    getUserIds() {
         return this._users.map( ({ _id}) => _id);
     };
 
-    get UserNameById(userId) {
+    getUserNameById(userId) {
         let userName = this._users.find(i => i._id === userId)
         return userName === undefined ? [] : userName._name ;
     };
