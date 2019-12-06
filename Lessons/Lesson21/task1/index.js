@@ -1,14 +1,14 @@
 const task = [
   { text: 'Buy milk', done: false },
-  { text: 'Pick up Tom from airport', done: true },
+  { text: 'Pick up Tom from airport', done: false },
   { text: 'Visit party', done: false },
   { text: 'Visit doctor', done: true },
-  { text: 'Buy meat', done: false },
+  { text: 'Buy meat', done: true },
 ]
 
 const rederListItem = listItem => {
   const listElement = document.querySelector('.list');
-  
+
   const listItemElements = listItem
       .sort((a, b) => a.done - b.done)
       .map(({ text, done }) => {
