@@ -59,7 +59,7 @@ const creatNewWork = () => {
       id: todos.length + 1,
       text: inputElem.value,
       done: false,
-      date: new Date()
+      date: new Date();
   });
 
   inputElem.value = '';
