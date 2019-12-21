@@ -46,9 +46,9 @@ const removeHandlers = () => {
 
 btnRemoveHandlers.addEventListener('click', removeHandlers);
 
-const clear = (element) => {
-    element.innerHTML = '';
-};
 
-const clearBox = clear.bind(null, eventsListElem);
-btnClear.addEventListener('click', clearBox);
+const clearEventList = () => {
+    document.querySelector('.events-list').innerHTML = '';
+};
+const clearBox = clearEventList;
+clearBtn.addEventListener('click', clearBox);
