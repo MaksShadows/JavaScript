@@ -48,7 +48,7 @@ const creatEvent = function() {
     done: false,
     text: taskInput.value,
     data: new Date()
-  })
+  });
   taskInput.value = '';
   rederListItem(task);
 };
