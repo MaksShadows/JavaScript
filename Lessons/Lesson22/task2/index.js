@@ -38,13 +38,12 @@ const listElement  = document.querySelector('.list')
 listElement.addEventListener('click', check);
 const taskInput = document.querySelector('.task-input');
 
-const taskInput = function(){
-  if (taskInput.value == '') return;
 
-};
 
 const creatEvent = function() {
   const  taskInput = document.querySelector('.task-input')
+
+  if (taskInput.value == '') return;
 
   task.push({
     id: task.length,
