@@ -1,16 +1,10 @@
 const task = [
-  { text: 'Buy milk', done: false, id: 0, date: new Date(2010, 9, 1, 0, 0, 0, 0) },
-  { text: 'Pick up Tom from airport', done: false, id: 1, date: new Date(2011, 6, 1, 0, 0, 0, 0) },
-  { text: 'Visit party', done: false, id: 2, date: new Date(2015, 3, 1, 0, 0, 0, 0) },
-  { text: 'Buy meat', done: true, id: 4, date: new Date(2018, 5, 1, 0, 0, 0, 0) },
-  { text: 'Visit doctor', done: true, id: 3, date: new Date(2019, 8, 1, 0, 0, 0, 0) },
-];
-
-
-const listElem = document.querySelector('.list');
-const btnElem = document.querySelector('.btn');
-const inputElem = document.querySelector('.task-input');
-
+  { text: 'Buy milk', done: false, id:1, date: new Date(2010, 9, 1, 0, 0, 0, 0),},
+  { text: 'Pick up Tom from airport', done: false, id:2, data: new Date(2011, 6, 1, 0, 0, 0, 0) },
+  { text: 'Visit party', done: false, id:3,  date: new Date(2015, 3, 1, 0, 0, 0, 0) },
+  { text: 'Visit doctor', done: true, id:4,  date: new Date(2018, 5, 1, 0, 0, 0, 0) },
+  { text: 'Buy meat', done: true, id:5,  date: new Date(2019, 8, 1, 0, 0, 0, 0) },
+]
 
 const rederListItem = listItem => {
   const listElement = document.querySelector('.list');
@@ -22,50 +16,51 @@ const rederListItem = listItem => {
           const listItemElem = document.createElement('li')
           listItemElem.classList.add('list__item');
           listItemElem.setAttribute('id', `${id}`);
-
           const checkboxElem = document.createElement('input');
           checkboxElem.setAttribute('type', 'checkbox')
           checkboxElem.checked = done;
           if (done) listItemElem.classList.add('list__item_done')
           checkboxElem.classList.add('list__item-checkbox')
           listItemElem.append(checkboxElem, text)
+          listElement.innerHTML = '';
+
           return listItemElem
       });
 
   listElement.append(...listItemElements)
 }
 
-
 rederListItem(task);
 
-const checkDoneWork = (event) => {
-  const checkTarget = event.target;
-  if (checkTarget.tagName != 'INPUT') return;
-
-  const getId = todos.find(elem => elem.id === +checkTarget.parentElement.id);
-  getId.done = checkTarget.checked;
-
-  listElem.innerHTML = '';
-  renderListItems(todos);
-};
-
-listElem.addEventListener('click', checkDoneWork);
+const btnAddIvent = document.querySelector('.btn-сreate');
+btnAddIvent.addEventListener('click',  creatEvent);
+const listElement  = document.querySelector('.list')
+listElement.addEventListener('click', check);
+const taskInput = document.querySelector('.task-input');
 
 
-const creatNewWork = () => {
-  if (inputElem.value == '') return;
 
-  todos.unshift({
-      id: todos.length + 1,
-      text: inputElem.value,
-      done: false,
-      date: new Date();
+const creatEvent = function() {
+  const  taskInput = document.querySelector('.task-input')
+
+  if (taskInput.value == '') return;
+
+  task.push({
+    id: task.length,
+    done: false,
+    text: taskInput.value,
+    data: new Date()
   });
-
-  inputElem.value = '';
-
-  listElem.innerHTML = '';
-  renderListItems(todos);
+  taskInput.value = '';
+  rederListItem(task);
 };
+  
 
-btnElem.addEventListener('click', creatNewWork);
+const check = function(event) {
+  const task = tasks.find(elem => elem.id === +event.target.parentElement.id);
+  task.done = event.target.checked;
+  rederListItem(task);
+}
+
+
+
