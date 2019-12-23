@@ -55,7 +55,7 @@ const creatEvent = function() {
     done: false,
     text: taskInput.value,
     data: new Date(),
-    dateDone: null,
+   
 
   });
   taskInput.value = '';
