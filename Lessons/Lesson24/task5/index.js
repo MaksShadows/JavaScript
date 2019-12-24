@@ -66,6 +66,7 @@ const creatEvent = function() {
 const check = function(event) {
   const task = tasks.find(elem => elem.id === +event.target.parentElement.id);
   task.done = event.target.checked;
+  task.dateDone =  task.done ? new Date() : null;
   rederListItem(task);
 }
 
