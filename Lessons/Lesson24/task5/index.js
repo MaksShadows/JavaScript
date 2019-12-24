@@ -44,7 +44,6 @@ listElement.addEventListener('click', check);
 const taskInput = document.querySelector('.task-input');
 
 
-
 const creatEvent = function() {
   const  taskInput = document.querySelector('.task-input')
 
