@@ -15,18 +15,16 @@ const rederListItem = listItem => {
   const listElement = document.querySelector('.list');
 
   const listItemElements = listItem
-      .sort((a, b) => a.done - b.done)
       .sort((a, b) => b.date - a.date)
       .sort((a, b) => b.dateDone - a.dateDone)
+      .sort((a, b) => a.done - b.done)
       .map(({ text, done, id }) => {
           const listItemElem = document.createElement('li')
           listItemElem.classList.add('list__item');
           listItemElem.setAttribute('id', `${id}`);
-
           const checkboxElem = document.createElement('input');
           checkboxElem.setAttribute('type', 'checkbox')
           checkboxElem.checked = done;
-
           if (done) listItemElem.classList.add('list__item_done')
           checkboxElem.classList.add('list__item-checkbox')
           listItemElem.append(checkboxElem, text)
@@ -40,14 +38,15 @@ const rederListItem = listItem => {
 
 rederListItem(task);
 
-const btnAddEvent = document.querySelector('.btn-сreate');
-btnAddEvent.addEventListener('click',  creatEvent);
+const btnAddIvent = document.querySelector('.btn-сreate');
+btnAddIvent.addEventListener('click',  creatEvent);
 const listElement  = document.querySelector('.list')
 listElement.addEventListener('click', check);
 const taskInput = document.querySelector('.task-input');
 
 
-const creatEvent = () =>{
+
+const creatEvent = function() {
   const  taskInput = document.querySelector('.task-input')
 
   if (taskInput.value == '') return;
@@ -64,12 +63,9 @@ const creatEvent = () =>{
 };
   
 
-const check = (event) => {
-
+const check = function(event) {
   const task = tasks.find(elem => elem.id === +event.target.parentElement.id);
   task.done = event.target.checked;
-  task.dateDone = task.done ? new Date() : undefined;
-
   rederListItem(task);
 }
 
