@@ -1,10 +1,10 @@
 const task = [
   { text: 'Buy milk', done: false, id:1, date: new Date(2010, 9, 1, 0, 0, 0, 0),
-  dateDone: undefined },
+  dateDone: null },
   { text: 'Pick up Tom from airport', done: false, id:2, data: new Date(2011, 6, 1, 0, 0, 0, 0),
-  dateDone: undefined },
+  dateDone: null },
   { text: 'Visit party', done: false, id:3,  date: new Date(2015, 3, 1, 0, 0, 0, 0),
-  dateDone: undefined },
+  dateDone: null },
   { text: 'Visit doctor', done: true, id:4,  date: new Date(2018, 5, 1, 0, 0, 0, 0),
   dateDone: new Date( 2020, 8, 8 ) },
   { text: 'Buy meat', done: true, id:5,  date: new Date(2019, 8, 1, 0, 0, 0, 0),
@@ -56,7 +56,7 @@ const creatEvent = function() {
     done: false,
     text: taskInput.value,
     data: new Date(),
-    dateDone: undefined,
+    dateDone: null,
   });
   taskInput.value = '';
   rederListItem(task);
