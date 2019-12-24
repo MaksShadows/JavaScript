@@ -1,4 +1,4 @@
-const task = [
+const tasks = [
   { text: 'Buy milk', done: false, id:1, date: new Date(2010, 9, 1, 0, 0, 0, 0),
   dateDone: null },
   { text: 'Pick up Tom from airport', done: false, id:2, data: new Date(2011, 6, 1, 0, 0, 0, 0),
@@ -16,12 +16,13 @@ const rederListItem = listItem => {
 
   const listItemElements = listItem
       .sort((a, b) => b.date - a.date)
-      .sort((a, b) => b.dateDone - a.dateDone)
       .sort((a, b) => a.done - b.done)
+      .sort((a, b) => a.dateDone - b.dateDone)
       .map(({ text, done, id }) => {
           const listItemElem = document.createElement('li')
           listItemElem.classList.add('list__item');
           listItemElem.setAttribute('id', `${id}`);
+
           const checkboxElem = document.createElement('input');
           checkboxElem.setAttribute('type', 'checkbox')
           checkboxElem.checked = done;
@@ -36,39 +37,35 @@ const rederListItem = listItem => {
   listElement.append(...listItemElements)
 }
 
-rederListItem(task);
+rederListItem(tasks);
 
 const btnAddIvent = document.querySelector('.btn-сreate');
-btnAddIvent.addEventListener('click',  creatEvent);
 const listElement  = document.querySelector('.list')
-listElement.addEventListener('click', check);
 const taskInput = document.querySelector('.task-input');
 
-
-
-const creatEvent = function() {
-  const  taskInput = document.querySelector('.task-input')
-
-  if (taskInput.value == '') return;
-
-  task.push({
-    id: task.length,
-    done: false,
-    text: taskInput.value,
-    data: new Date(),
-    dateDone: null,
-  });
-  taskInput.value = '';
-  rederListItem(task);
-};
-  
 
 const check = function(event) {
   const task = tasks.find(elem => elem.id === +event.target.parentElement.id);
   task.done = event.target.checked;
   task.dateDone =  task.done ? new Date() : null;
-  rederListItem(task);
-}
+  rederListItem(tasks);
+};
 
+listElement.addEventListener('click', check);
 
+const creatEvent = function() {
 
+  if (taskInput.value == '') return;
+
+  tasks.push({
+    id: tasks.length,
+    done: false,
+    text: taskInput.value,
+    data: new Date(),
+    dateDone: undefined,
+  });
+  taskInput.value = '';
+  rederListItem(tasks);
+};
+
+btnAddIvent.addEventListener('click',  creatEvent);
