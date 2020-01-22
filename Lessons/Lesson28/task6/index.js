@@ -1,12 +1,20 @@
-export const maxFibonacci = (num) => {
-  if (num < 1) return 0;
-  let a = 1;
-  let b = 1;
-  for (let i = 0; i <= num; i++) {
-      let c = a + b;
-      a = second;
-      b = c;
-      if (c > num) return a;
-      if (c === num) return b;
+function fibonacci(num) {
+  if (num < 1) {
+      return 1;
+  }
+  return fibonacci(num - 1) + fibonacci(num - 2);
+};
+export function maxFibonacci(input) {
+  let index = 0;
+
+  let maxFib = 0;
+  while (true) {
+      let fib = fibonacci(index);
+      if (fib <= input) {
+          maxFib = fib;
+          index++;
+      } else {
+          return maxFib;
+      }
   }
 }
