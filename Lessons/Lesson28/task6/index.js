@@ -5,6 +5,7 @@ export const maxFibonacci = (num) => {
       let c = a + b;
       a = second;
       b = c;
+      if (c >num) return a
+      if (c == num) return b
   }
-  return b;
 }
