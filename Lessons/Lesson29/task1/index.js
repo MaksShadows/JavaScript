@@ -14,7 +14,7 @@ imgElem.addEventListener('load', onImageLoaded);
 imgElem.addEventListener('error', () => callback('Image load failed'));
 };
 
-const imgSrc = 'https://a.wattpad.com/cover/84608722-352-k886345.jpg';
+
 
 const onImageLoaded = (error, data) => {
 
