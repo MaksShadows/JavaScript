@@ -14,6 +14,7 @@ export const shmoment = date => {
           return this;
       },
       subtract(type, value) {
+        
           if (type === 'years') result = new Date(result.getFullYear() - value);
           if (type === 'months') result = new Date(result.getMonth() - value);
           if (type === 'days') result = new Date(result.getDate() - value);
