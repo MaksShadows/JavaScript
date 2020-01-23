@@ -13,6 +13,6 @@ export const requestUserData = (userId, callback) => {
           email: `${userId}@example.com`,
       });
   }
-  setTimeout(onLoad, Math.random(1-3) * 3,  1000);
+  setTimeout(onLoad, Math.random(1-3),  1000);
 
 };
