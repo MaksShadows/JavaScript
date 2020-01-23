@@ -18,7 +18,7 @@ export const addImage = (imgSrc, callback) => {
 
 };
 
-
+const imgSrc = 'https://a.wattpad.com/cover/84608722-352-k886345.jpg';
 
 const onImageLoaded = (error, data) => {
 
