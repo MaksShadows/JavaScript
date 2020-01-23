@@ -55,6 +55,8 @@ listElement.addEventListener('click', check);
 
 const creatEvent = function() {
 
+  const taskInput = document.querySelector('.task-input');
+
   if (taskInput.value == '') return;
 
   tasks.push({
