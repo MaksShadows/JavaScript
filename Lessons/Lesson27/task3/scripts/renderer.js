@@ -28,7 +28,6 @@ function renderTasks() {
   listElem.innerHTML = '';
   const tasksElems = tasksList
       .sort((a, b) => new Date(b.createDate) - new Date(a.createDate))
-      .sort((a, b) => new Date(b.finishDate) - new Date(a.finishDate))
       .sort((a, b) => a.done - b.done)
       .map(createListItem);
 
