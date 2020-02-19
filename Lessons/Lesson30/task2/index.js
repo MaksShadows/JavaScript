@@ -10,7 +10,6 @@ export const addImageV2 = imgSrc => {
               resolve(data);
           }
       };
-      addImage(imgSrc, callback);
   });
   return p;
 };
