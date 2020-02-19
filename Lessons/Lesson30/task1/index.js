@@ -14,3 +14,9 @@ export const addImage = imgSrc => {
   });
   return p;
 };
+
+const imgSrc = 'https://gromcode.s3.eu-central-1.amazonaws.com/front-end/html-css/lesson15/task1/big.jpeg';
+
+ const resultPromise = addImage(imgSrc);
+resultPromise.then(data => console.log(data));
+ resultPromise.catch(error => console.log(error));
