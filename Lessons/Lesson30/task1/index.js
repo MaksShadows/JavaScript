@@ -6,10 +6,12 @@ export const addImage = imgSrc => {
   
     const containerElem = document.querySelector('.page');
     containerElem.append(imgElem);
-    
-    const onImageLoaded = () => resolveCb({ width: 200, height: 100 });
+    const onImageLoaded = () => {
+      const {width, height} = imgElem;
+      resolveCb({width, height});
+  }
+
     imgElem.addEventListener('load', onImageLoaded);
-    
     imgElem.addEventListener('error', () => rejectCb('Image load failed'));
   });
   return p;
@@ -17,6 +19,8 @@ export const addImage = imgSrc => {
 
 const imgSrc = 'https://gromcode.s3.eu-central-1.amazonaws.com/front-end/html-css/lesson15/task1/big.jpeg';
 
- const resultPromise = addImage(imgSrc);
-resultPromise.then(data => console.log(data));
- resultPromise.catch(error => console.log(error));
+const resultPromise = addImage(imgSrc);
+
+resultPromise.catch(error => console.log(error));
+
+console.log(resultPromise);
