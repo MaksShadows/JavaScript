@@ -1,0 +1,51 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+.user__info {
+  margin: 32px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.user__avatar {
+  height: 320px;
+  width: 320px;
+  border-radius: 50%;
+}
+
+.user__name {
+  font-weight: 700;
+}
+
+.user__location {
+  color: #7f7f7f;
+}
+
+.name-form {
+  margin: 0 auto 50px;
+}
+
+.name-form__btn,
+.name-form__input {
+  padding: 7px;
+  border-radius: 8px;
+  border: 3px solid #ccc;
+  background-color: #fff;
+  outline: none;
+}
+
+.name-form__input {
+  margin-right: 20px;
+}
