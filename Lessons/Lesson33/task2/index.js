@@ -19,6 +19,7 @@ const renderUserData = userData => {
     const { avatar_url, name } = userData;
     userAvatarElem.src = avatar_url;
     userNameElem.textContent = name;
+
 };
 
 const onSearchUser = () => {
@@ -30,18 +31,11 @@ const onSearchUser = () => {
 showUserBtnElem.addEventListener('click', onSearchUser);
 
 
-
-
-
-export const getMostActiveDevs = ({ days, userId, repoId }) => { 
-    const commits = { days };
-    let counter = 0;
-    fetch(`https://api.github.com/repos/${userId}/${repoId}/commits?per_page=100`) 
-        .then(response => response.json()) 
-        .then(arr => {
-            
-            const array = Object.values(result);
-            
-            return array.filter(elem => elem.count === counter);
-        });
+const getUserObject = () => { 
+    const userId = userIdInputElem.value;
+    const repoId = userRepoInputElem.value;
+    const days = userDaysInputElem.value;
+  
 };
+
+showUserBtnElem.addEventListener('click', getUserObject);
