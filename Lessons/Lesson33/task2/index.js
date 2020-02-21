@@ -35,7 +35,19 @@ const getUserObject = () => {
     const userId = userIdInputElem.value;
     const repoId = userRepoInputElem.value;
     const days = userDaysInputElem.value;
+    getMostActiveDevs({ userId, repoId, days });
   
 };
 
 showUserBtnElem.addEventListener('click', getUserObject);
+
+
+export const getMostActiveDevs = ({ days, userId, repoId }) => {
+    const object = { userId, repoId, days };
+    const  counter = 0;
+
+    const startDate = new Date(new Date().setDate(new Date().getDate() - object.days));
+    fetch(`https://api.github.com/repos/${userId}/${repoId}/commits?per_page=100`) 
+        .then(response => response.json()) ;
+};
+
