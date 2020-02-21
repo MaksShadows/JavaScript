@@ -29,8 +29,6 @@ const onSearchUser = () => {
 showUserBtnElem.addEventListener('click', onSearchUser);
 
 
-
-
 const getObject = () => {
     const days = userDaysInputEelem.value;
     const userId = userIdInputEelem.value;
@@ -40,14 +38,15 @@ const getObject = () => {
 showUserBtnElem.addEventListener('click', getObject);
 
 export const getMostActiveDevs = ({ userId, repoId, days }) => {
-    const object = { userId, repoId, days };
-    let maxCount = 0;
+    const object = { days };
+    let counter = 0;
+
     const startDate = new Date(new Date().setDate(new Date().getDate() - object.days));
-    fetch(`https://api.github.com/repos/${object.userId}/${object.repoId}/commits?per_page=100`)
+    fetch(`https://api.github.com/repos/${userId}/${repoId}/commits?per_page=100`)
         .then(response => response.json())
         .then(array => {
-            const resArr = array.map(({ commit: { author: { name, email, date } } }) => ({ name, email, date }))
-                .filter(elem => new Date(elem.date) > startDate)
+            let result = array.map(({ commit: { author: { name, email, date } } }) => ({ name, email, date }))
+                .filter(item => new Date(item.date) > startDate)
                 .reduce((acc, { email, name }) => {
                     const oldCount = acc[email] ? acc[email].count : 0;
                     return {
@@ -56,13 +55,11 @@ export const getMostActiveDevs = ({ userId, repoId, days }) => {
                     };
                 }, {});
 
-            const arr = Object.values(resArr);
+            const arr = Object.values(result);
             arr.forEach(elem => {
-                if (elem.count > maxCount) {
-                    maxCount = elem.count
-                }
-            })
-            return arr.filter(elem => elem.count === maxCount);
-        })
+                if (elem.count > counter) counter = elem.count;
+            });
+            return arr.filter(elem => elem.count === counter);
+        });
 
 };
