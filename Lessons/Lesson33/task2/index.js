@@ -23,7 +23,7 @@ const onSearchUser = () => {
 showUserBtnElem.addEventListener('click', onSearchUser);
 
 
-const getUserObject = () => { // Значения из инпутов.
+const getUserObject = () => { 
     const userId = userIdInputElem.value;
     const repoId = userRepoInputElem.value;
     const days = userDaysInputElem.value;
