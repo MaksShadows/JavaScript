@@ -1,7 +1,7 @@
 const baseUrl = 'https://crudcrud.com/api/a9ec75833dfe4bf1b5de1e0797328f48/tasks';
 
 const mapTasks = tasks =>
-    tasks.map(({ _id, ...rest }) => ({...task, id: _id }));
+    tasks.map(({ _id, ...rest }) => ({...rest, id: _id }));
 
 export const getTasksList = () => {
     return fetch(baseUrl)

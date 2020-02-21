@@ -17,7 +17,6 @@ export const onCreateTask = () => {
         text,
         done: false,
         createDate: new Date().toISOString(),
-
     };
 
     createTask(newTask)

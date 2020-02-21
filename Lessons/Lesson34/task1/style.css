@@ -24,21 +24,20 @@ body {
 }
 
 .list {
-  margin: 0;
+  width: 100%;
+  margin: auto;
   padding: 0;
   list-style-type: none;
-  margin: auto;
-  width: 100%;
 }
 
 .list__item {
   display: flex;
   align-items: center;
   height: 40px;
-  border-radius: 8px;
-  background-color: wheat;
   margin-bottom: 8px;
   padding: 8px;
+  border-radius: 8px;
+  background-color: wheat;
 }
 
 .list__item_done {
@@ -46,7 +45,7 @@ body {
   opacity: 0.7;
 }
 
-.list__item-child {
+.list__item:last-child {
   margin-bottom: 0;
 }
 
@@ -55,13 +54,13 @@ body {
 }
 
 .btn {
+  margin-left: 16px;
   height: 32px;
   min-width: 64px;
-  border: 3px solid #ccc;
-  outline: none;
-  cursor: pointer;
   border-radius: 8px;
-  margin-left: 16px;
+  border: 3px solid #ccc;
+  cursor: pointer;
+  outline: none;
 }
 
 .actions {
@@ -70,12 +69,11 @@ body {
 }
 
 .task-input {
-  height: 32px;
-  border: 3px solid #ccc;
-  border-radius: 8px;
   flex: 1;
+  height: 32px;
+  border-radius: 8px;
+  border: 3px solid #ccc;
 }
-
 .delete-btn {
   width: 24px;
   height: 24px;
