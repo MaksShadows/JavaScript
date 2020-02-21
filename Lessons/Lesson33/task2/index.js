@@ -38,7 +38,7 @@ const getObject = () => {
 showUserBtnElem.addEventListener('click', getObject);
 
 export const getMostActiveDevs = ({ userId, repoId, days }) => {
-    const object = { days };
+    const object = { userId, repoId, days };
     let counter = 0;
 
     const startDate = new Date(new Date().setDate(new Date().getDate() - object.days));
