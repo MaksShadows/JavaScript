@@ -42,12 +42,30 @@ const getUserObject = () => {
 showUserBtnElem.addEventListener('click', getUserObject);
 
 
-export const getMostActiveDevs = ({ days, userId, repoId }) => {
+export const getMostActiveDevs = ({ userId, repoId, days }) => {
     const object = { userId, repoId, days };
-    const  counter = 0;
-
+    let counter   = 0;
     const startDate = new Date(new Date().setDate(new Date().getDate() - object.days));
-    fetch(`https://api.github.com/repos/${userId}/${repoId}/commits?per_page=100`) 
-        .then(response => response.json()) ;
-};
+    fetch(`https://api.github.com/repos/${object.userId}/${object.repoId}/commits?per_page=100`)
+        .then(response => response.json())
+        .then(array => {
+            const resArr = array.map(({ commit: { author: { name, email, date } } }) => ({ name, email, date }))
+                .filter(elem => new Date(elem.date) > startDate)
+                .reduce((acc, { email, name }) => {
+                    const oldCount = acc[email] ? acc[email].count : 0;
+                    return {
+                        ...acc,
+                        [email]: { name, email, count: oldCount + 1 }
+                    };
+                }, {});
 
+            const arr = Object.values(resArr);
+            arr.forEach(elem => {
+                if (elem.count > counter) {
+                    counter = elem.count
+                }
+            })
+            return arr.filter(elem => elem.count === counter);
+        })
+
+};
