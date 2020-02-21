@@ -44,7 +44,7 @@ showUserBtnElem.addEventListener('click', getUserObject);
 
 export const getMostActiveDevs = ({ userId, repoId, days }) => {
     const object = { userId, repoId, days };
-    let counter   = 0;
+    let maxCount = 0;
     const startDate = new Date(new Date().setDate(new Date().getDate() - object.days));
     fetch(`https://api.github.com/repos/${object.userId}/${object.repoId}/commits?per_page=100`)
         .then(response => response.json())
@@ -61,11 +61,11 @@ export const getMostActiveDevs = ({ userId, repoId, days }) => {
 
             const arr = Object.values(resArr);
             arr.forEach(elem => {
-                if (elem.count > counter) {
-                    counter = elem.count
+                if (elem.count > maxCount) {
+                    maxCount = elem.count
                 }
             })
-            return arr.filter(elem => elem.count === counter);
+            return arr.filter(elem => elem.count === maxCount);
         })
 
 };
