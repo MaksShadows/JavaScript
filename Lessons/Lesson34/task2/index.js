@@ -21,39 +21,33 @@ const onInputChange = () => {
     }
 };
 
-emailInputElem.addEventListener('input', onInputChange);
-passwordInputElem.addEventListener('input', onInputChange);
 
-
-const userSave = data => {
-    return fetch(baseUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify(data)
-    })
-};
 
 const formSubmit = event => {
     event.preventDefault();
 
     const formData = [...new FormData(formElem)]
         .reduce((acc, [key, value]) => ({...acc, [key]: value }), {});
-        
 
-        userSave(formData)
+        return fetch(baseUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(formData)
+        })
         .then(response => response.json())
         .then(data => {
-            alert(JSON.stringify(data));
+            submitBtnElem.setAttribute('disabled', true);
             formElem.reset();
+            alert(JSON.stringify(data));
         })
         .catch(() => {
             errorElem.textContent = 'Failed to create user';
 
         });
 
-    submitBtnElem.setAttribute('enabled', 'disabled');
 }
 
 formElem.addEventListener('submit', formSubmit);
+formElem.addEventListener('input', onInputChange);
