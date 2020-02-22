@@ -1,56 +1,55 @@
-const userForm = document.querySelector('.login-form');
-const submitBtn = document.querySelector('.submit-button');
-const errorText = document.querySelector('.error-text');
+const emailInputElem = document.querySelector('#email');
+const passwordInputElem = document.querySelector('#password');
+const submitBtnElem = document.querySelector('.submit-button');
+const errorElem = document.querySelector('.error-text');
 
-const onFormChange = () => {
-    errorText.textContent = null;
 
-    if (userForm.reportValidity()) {
-        submitBtn.disabled = false;
+const baseUrl = 'https://crudcrud.com/api/a9ec75833dfe4bf1b5de1e0797328f48/users';
+const formElem = document.querySelector('.login-form');
+
+const onInputChange = () => {
+    const isValidForm = formElem.reportValidity();
+    if (isValidForm) {
+        submitBtnElem.removeAttribute('disabled');
+        errorElem.textContent = '';
+    } else {
+        submitBtnElem.setAttribute('disabled', true);
+        errorElem.textContent = '';
     }
-}
-userForm.addEventListener("input", onFormChange);
+};
 
-const onFormSubmit = (e) => {
-    e.preventDefault();
-    const formData = [...new FormData(userForm)]
-        .reduce((acc, item) => {
-            return {
-                [item[0]]: item[1],
-                ...acc,
-            }
-        }, {});
-
-    postUser(formData)
-        .then((response) => {
-            if (!response.ok) {
-                throw Error(response.statusText);
-            }
-            return response.json();
-        }).then((response) => {
-            window.alert(JSON.stringify(response));
-            userForm.reset();
-            submitBtn.disabled = true;
-        }
-        ).catch(() => {
-            errorText.textContent = 'Failed to create user';
-            userForm.reset();
-            submitBtn.disabled = true;
-        });
-}
-
-userForm.addEventListener("submit", onFormSubmit);
+emailInputElem.addEventListener('input', onInputChange);
+passwordInputElem.addEventListener('input', onInputChange);
 
 
-const baseLink = 'https://crudcrud.com/api/a9ec75833dfe4bf1b5de1e0797328f48/users';
-
-
-const postUser = (newUserData) => {
-    return fetch(baseLink, {
+const dataSave = data => {
+    return fetch(baseUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
         },
-        body: JSON.stringify(newUserData)
+        body: JSON.stringify(data)
     })
+};
+
+const formSubmit = event => {
+    event.preventDefault();
+
+    const formData = [...new FormData(formElem)]
+        .reduce((acc, [key, value]) => ({...acc, [key]: value }), {});
+
+    dataSave(formData)
+        .then(response => response.json())
+        .then(data => {
+            alert(JSON.stringify(data));
+            formElem.reset();
+        })
+        .catch(() => {
+            errorElem.textContent = 'Failed to create user';
+
+        });
+
+    submitBtnElem.setAttribute('enabled', 'disabled');
 }
+
+formElem.addEventListener('submit', formSubmit);
