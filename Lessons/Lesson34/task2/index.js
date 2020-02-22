@@ -42,14 +42,14 @@ const onFormSubmit = (e) => {
 userForm.addEventListener("submit", onFormSubmit);
 
 
-const baseLink = 'https://crudcrud.com/api/a9ec75833dfe4bf1b5de1e0797328f48/createUSer';
+const baseUrl = 'https://crudcrud.com/api/a9ec75833dfe4bf1b5de1e0797328f48/users';
 
 const postUser = (newUserData) => {
-    return fetch(baseLink, {
+    return fetch(baseUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(newUserData)
     })
-}
+};
