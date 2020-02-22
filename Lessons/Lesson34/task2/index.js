@@ -6,7 +6,7 @@ const formElem = document.querySelector('.login-form');
 
 
 
-const baseUrl = 'https://crudcrud.com/api/a9ec75833dfe4bf1b5de1e0797328f48/user';
+const baseUrl = 'https://crudcrud.com/api/a9ec75833dfe4bf1b5de1e0797328f48/users';
 
 const onInputChange = () => {
     const isValidForm = formElem.reportValidity();
