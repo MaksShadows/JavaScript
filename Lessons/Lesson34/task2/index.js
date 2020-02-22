@@ -1,51 +1,43 @@
 const baseUrl = 'https://crudcrud.com/api/a9ec75833dfe4bf1b5de1e0797328f48/tasks';
 
-const page = document.querySelector('.page')
-const sendBtn = document.querySelector('.submit-button');
-const errorText = document.querySelector('.error-text');
-const inputEmail = document.querySelector('#email');
-const inputName = document.querySelector('#name');
-const inputPassword = document.querySelector('#password');
-const form = document.querySelector('.login-form')
+const formElem = document.querySelector('.login-form');
+const submitBtnElem = document.querySelector('.submit-button');
+const inputs = [...document.querySelectorAll('input')];
+const errorTextElem = document.querySelector('.error-text');
 
-const createUser = userData => {
-    return fetch(baseUrl, {
+
+const reportValidity = () => {
+    if (formElem.reportValidity()) {
+        submitBtnElem.disabled = false;
+    } else {
+        submitBtnElem.disabled = true;
+    }
+    errorTextElem.textContent = '';
+};
+
+const postData = event => {
+    event.preventDefault();
+    const newUser = [...new FormData(formElem)]
+        .reduce((acc, [field, value]) => ({...acc, [field]: value }), {});
+
+    fetch(baseUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
             },
-            body: JSON.stringify(userData)
+            body: JSON.stringify(newUser),
         })
         .then(response => response.json())
-        .then(data => JSON.stringify(data));
-}
-
-const validator = () => {
-    // console.log('work')
-    if (inputEmail.validity.valid && inputName.validity.valid && inputPassword.validity.valid) {
-        sendBtn.disabled = false
-
-    } else {
-        sendBtn.disabled = true;
-    }
-}
-
-const sendUser = (event) => {
-    event.preventDefault();
-    const formData = [...new FormData(form)]
-        .reduce((acc, [field, value]) => ({...acc, [field]: value }), {});
-    let newUser = formData
-    createUser(newUser)
         .then(data => {
-            inputEmail.value = '';
-            inputName.value = '';
-            inputPassword.value = '';
-            sendBtn.disabled = true;
-            alert(data);
+            inputs.map(elem => elem.value = '');
+            submitBtnElem.disabled = true;
+            alert(JSON.stringify(data))
         })
         .catch(() => {
-            errorText.textContent = 'Failed to create user';
-        })
-}
-page.addEventListener('click', validator)
-sendBtn.addEventListener('click', sendUser)
+            errorTextElem.textContent = 'Failed to create user';
+        });
+};
+
+
+formElem.addEventListener('input', reportValidity);
+formElem.addEventListener('submit', postData);
