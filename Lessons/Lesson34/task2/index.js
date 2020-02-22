@@ -4,7 +4,27 @@ const nameInputElem = document.querySelector('#name');
 const btnElem = document.querySelector('.submit-button');
 const errorTextElem = document.querySelector('.error-text');
 
+const pEmail = document.createElement('p');
+const pPassword = document.createElement('p');
+const pName = document.createElement('p');
+const pErrorText = document.createElement('p');
+errorTextElem.append(pEmail,pName,pPassword,pErrorText);
 
+const reportValidity = () => {
+    const emailP = pEmail.textContent; 
+    const nameP = pName.textContent; 
+    const passwordP = pPassword.textContent; 
+    if(emailP || nameP || passwordP){
+        btnElem.setAttribute('disabled','disabled');
+    }
+    if(!emailP && !nameP && !passwordP){
+        btnElem.removeAttribute('disabled');
+    }
+    if(emailInputElem.value === ''|| nameInputElem.value === ''|| passwordInputElem.value === ''){
+        btnElem.setAttribute('disabled','disabled');
+    }
+};
+reportValidity();
 
 const isRequiredPassword = value => value ? undefined : 'Required password';
 
@@ -26,6 +46,16 @@ const validate = (fieldName, value) => {
         .filter(errorText => errorText)
         .join('');
 };
+const onInputChange = event => {
+    pErrorText.textContent = '';
+    const typeOfInput = event.target.name;
+    const errorText = validate(typeOfInput, event.target.value); 
+    pPassword.textContent = errorText;
+    reportValidity();
+};
+nameInputElem.addEventListener('input', onInputChange);
+emailInputElem.addEventListener('input', onInputChange);
+passwordInputElem.addEventListener('input', onInputChange);
 
 
 const baseUrl = 'https://crudcrud.com/api/a9ec75833dfe4bf1b5de1e0797328f48/emailObjects';
@@ -34,7 +64,7 @@ const onFormSubmit = event => {
     event.preventDefault();
     const formData = [...new FormData(formElem)]
         .reduce((acc,[field,value]) => ({...acc, [field]:value}),{});
-   
+
     return fetch(baseUrl, {
         method: 'POST',
         headers: {
@@ -47,8 +77,8 @@ const onFormSubmit = event => {
         passwordInputElem.value = ''; 
         return fetch(baseUrl)
             .then(response => response.json())
-            .then(arrayOfUserObjects => { 
-           
+            .then(arrayOfUserObjects => {
+            
                 alert(JSON.stringify(arrayOfUserObjects));
             });
     })
@@ -58,3 +88,4 @@ const onFormSubmit = event => {
     });
 }; 
 formElem.addEventListener('submit', onFormSubmit);
+
