@@ -1,55 +1,47 @@
-const emailInputElem = document.querySelector('#email');
-const passwordInputElem = document.querySelector('#password');
-const submitBtnElem = document.querySelector('.submit-button');
-const errorElem = document.querySelector('.error-text');
+let baseUrl = 'https://crudcrud.com/api/a9ec75833dfe4bf1b5de1e0797328f48/users'
 
 
-const baseUrl = 'https://crudcrud.com/api/a9ec75833dfe4bf1b5de1e0797328f48/users';
-const formElem = document.querySelector('.login-form');
+const form = document.forms[0];
 
-const onInputChange = () => {
-    const isValidForm = formElem.reportValidity();
-    if (isValidForm) {
-        submitBtnElem.removeAttribute('disabled');
-        errorElem.textContent = '';
-    } else {
-        submitBtnElem.setAttribute('disabled', true);
-        errorElem.textContent = '';
-    }
-};
+const submitButton = document.querySelector('.submit-button');
+const errorText = document.querySelector('.error-text');
+const inputs = [...document.querySelectorAll('input')];
 
-emailInputElem.addEventListener('input', onInputChange);
-passwordInputElem.addEventListener('input', onInputChange);
+form.addEventListener('input', validateFields);
+form.addEventListener('submit', submitData);
 
 
-const dataSave = data => {
-    return fetch(baseUrl, {
+
+
+function submitData(event) {
+    event.preventDefault();
+    const newUser = [...new FormData(form)]
+        .reduce((acc, [field, value]) => ({ ...acc, [field]: value }), {});
+
+    fetch(baseUrl, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json;charset=utf-8'
+            'Content-Type': 'application/json;charset=utf-8',
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(newUser),
     })
-};
-
-const formSubmit = event => {
-    event.preventDefault();
-
-    const formData = [...new FormData(formElem)]
-        .reduce((acc, [key, value]) => ({...acc, [key]: value }), {});
-
-    dataSave(formData)
         .then(response => response.json())
         .then(data => {
-            alert(JSON.stringify(data));
-            formElem.reset();
+            inputs.map(elem => elem.value = '');
+            submitButton.disabled = true;
+            alert(JSON.stringify(data))
         })
         .catch(() => {
-            errorElem.textContent = 'Failed to create user';
-
+            errorText.textContent = 'Failed to create user';
         });
+};
 
-    submitBtnElem.setAttribute('enabled', 'disabled');
-}
 
-formElem.addEventListener('submit', formSubmit);
+function validateFields() {
+    if (form.reportValidity()) {
+        submitButton.disabled = false;
+    } else {
+        submitButton.disabled = true;
+    }
+    errorText.textContent = '';
+};
