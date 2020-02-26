@@ -45,8 +45,6 @@ const formSubmit = event => {
             errorElem.textContent = 'Failed to create user';
             submitBtnElem.setAttribute('disabled', true);
         });
-        
-
 }
 
 formElem.addEventListener('submit', formSubmit);
