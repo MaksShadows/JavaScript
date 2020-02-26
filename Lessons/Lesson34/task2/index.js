@@ -1,3 +1,6 @@
+const baseUrl = 'https://crudcrud.com/api/a9ec75833dfe4bf1b5de1e0797328f48/users';
+
+
 const emailInputElem = document.querySelector('#email');
 const passwordInputElem = document.querySelector('#password');
 const submitBtnElem = document.querySelector('.submit-button');
@@ -6,7 +9,6 @@ const formElem = document.querySelector('.login-form');
 
 
 
-const baseUrl = 'https://crudcrud.com/api/a9ec75833dfe4bf1b5de1e0797328f48/users';
 
 const onInputChange = () => {
     const isValidForm = formElem.reportValidity();
@@ -19,19 +21,7 @@ const onInputChange = () => {
     }
 };
 
-emailInputElem.addEventListener('input', onInputChange);
-passwordInputElem.addEventListener('input', onInputChange);
 
-
-const userSave = data => {
-    return fetch(baseUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify(data)
-    })
-};
 
 const formSubmit = event => {
     event.preventDefault();
@@ -39,18 +29,25 @@ const formSubmit = event => {
     const formData = [...new FormData(formElem)]
         .reduce((acc, [key, value]) => ({...acc, [key]: value }), {});
 
-        userSave(formData)
+        return fetch(baseUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(formData)
+        })
         .then(response => response.json())
         .then(data => {
-            alert(JSON.stringify(data));
             formElem.reset();
+            alert(JSON.stringify(data));
         })
         .catch(() => {
             errorElem.textContent = 'Failed to create user';
-
+            submitBtnElem.setAttribute('disabled', true);
         });
+        
 
-    submitBtnElem.setAttribute('enabled', 'disabled');
 }
 
 formElem.addEventListener('submit', formSubmit);
+formElem.addEventListener('input', onInputChange);
