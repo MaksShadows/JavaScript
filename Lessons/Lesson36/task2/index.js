@@ -15,7 +15,6 @@ const showUserBtnElem = document.querySelector(".name-form__btn");
 const userNameInputElem = document.querySelector(".name-form__input");
 
 
-
 const onSearchUser = async() => {
   showSpinner();
   cleanReposList();
@@ -30,7 +29,6 @@ const onSearchUser = async() => {
   } finally {
       hideSpinner();
   }
-
 
   // fetchUserData(userName)
   //     .then(userData => {
