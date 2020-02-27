@@ -14,7 +14,6 @@ const getUsersBlogs = async (userIdArr) => {
     }
 }
 
-
 getUsersBlogs(["facebook", "google"])
 .then(response => console.log(response))
 
