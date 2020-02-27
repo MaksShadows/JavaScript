@@ -1,4 +1,3 @@
-  
 const getUserData = (userId) => {
 
     const baseLink = `https://api.github.com/users/${userId}`
@@ -14,8 +13,7 @@ const getUserData = (userId) => {
     return response
 }
 
- 
-export  const getUsersBlogs = async (userIdArr) => {
+const getUsersBlogs = async (userIdArr) => {
     try {
         const arrOfPromises = userIdArr.map(item => getUserData(item));
 
@@ -28,6 +26,4 @@ export  const getUsersBlogs = async (userIdArr) => {
     }
 }
 
-
-getUsersBlogs(['google', 'facebook', 'gaearon'])
-    .then(linksList => console.log(linksList));
+getUsersBlogs(['facebook', 'github', 'steve'])
