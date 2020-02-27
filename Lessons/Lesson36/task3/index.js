@@ -1,21 +1,9 @@
-const getUserData = (userId) => {
-
-    const baseLink = `https://api.github.com/users/${userId}`
-    const response = fetch(baseLink)
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } throw new Error('Loading failed');
-        })
-        .then(value => value.blog)
-        .catch(err => err);
-
-    return response
-}
+const fetchUser = async userId => fetch(`https://api.github.com/users/${userId}`)
+    .then(response => response.json());
 
 const getUsersBlogs = async (userIdArr) => {
     try {
-        const arrOfPromises = userIdArr.map(item => getUserData(item));
+        const arrOfPromises = userIdArr.map(item =>  fetchUser (item));
 
         const response = await Promise.all(arrOfPromises)
         console.log(response)
