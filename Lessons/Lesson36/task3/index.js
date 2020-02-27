@@ -7,7 +7,7 @@ const getUsersBlogs = async (userIdArr) => {
 
         const response = await Promise.all(arrOfPromises)
         console.log(response)
-        return response;
+        return response.map(user => user.blog);
     }
     catch (err) {
         return console.log(err.message)
