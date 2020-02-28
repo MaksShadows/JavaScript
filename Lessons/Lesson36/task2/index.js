@@ -17,7 +17,7 @@ const userNameInputElem = document.querySelector(".name-form__input");
 
 const onSearchUser = async() => {
   showSpinner();
-  cleanReposList();
+  clearRepoList();
   const userName = userNameInputElem.value;
   try {
       const userData = await fetchUserData(userName);
