@@ -1,7 +1,7 @@
 function setButton (){
   const elem = document.querySelector('.body');
   elem.innerHTML =  `<button>${buttonText}</button>`;
-  elem.textContent = "button text";
+  elem.textContent = `<button>${buttonText}</button>`;
 };
 
 
