@@ -1,6 +1,8 @@
-const  btn = document.querySelectorAll('.btn');
+const btn = document.querySelectorAll('.btn');
 
 function handleClick(event) {
-  console.log(event.target.textContent);
+    console.log(event.target.textContent);
 }
-btn.addEventListener('click', handleClick);
+btn.forEach(elem => {
+    elem.addEventListener('click', handleClick);
+});
