@@ -8,12 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(tasksList => {
             setItem('tasksList', tasksList)
             renderTasks();
-        });
-
+        })
     initTodoListHandlers();
 });
 
-const onStorageChange = e => {
+function onStorageChange(e) {
     if (e.key === 'tasksList') {
         renderTasks();
     }

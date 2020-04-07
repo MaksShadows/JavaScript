@@ -6,13 +6,12 @@ export const onCreateTask = () => {
     const taskTitleInputElem = document.querySelector('.task-input');
 
     const text = taskTitleInputElem.value;
-
     if (!text) {
         return;
     }
+
     taskTitleInputElem.value = '';
-
-
+    
     const newTask = {
         text,
         done: false,
@@ -24,6 +23,7 @@ export const onCreateTask = () => {
         .then(newTasksList => {
             setItem('tasksList', newTasksList);
             renderTasks();
+           
         });
 
 
