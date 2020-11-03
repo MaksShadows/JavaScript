@@ -12,7 +12,7 @@ export const addImage = imgSrc => {
   }
 
     imgElem.addEventListener('load', onImageLoaded);
-    imgElem.addEventListener('error', () => rejectCb('Image load failed'));
+    imgElem.addEventListener('error', () => rejectCb(new Error('Image load failed')));
   });
   return p;
 };
@@ -20,7 +20,7 @@ export const addImage = imgSrc => {
 const imgSrc = 'https://gromcode.s3.eu-central-1.amazonaws.com/front-end/html-css/lesson15/task1/big.jpeg';
 
 const resultPromise = addImage(imgSrc);
-
+resultPromise.then((data) => { console.log(data) });
 resultPromise.catch(error => console.log(error));
 
 console.log(resultPromise);
