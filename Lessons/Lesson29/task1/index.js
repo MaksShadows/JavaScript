@@ -17,7 +17,7 @@ export const addImage = (imgSrc, callback) => {
 };
 
 
-const imgSrc = 'https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg';
+//const imgSrc = 'https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg';
 
 //callack example
 const onImageLoaded = (error, imgElem) => {
