@@ -1,22 +1,34 @@
 export const addImage = (imgSrc, callback) => {
-	const imgElem = document.createElement("img");
-	imgElem.setAttribute('alt', 'My Photo');
-	imgElem.src = imgSrc;
 
-	const containerElem = document.querySelector('.page');
-	containerElem.append(imgElem);
+    const imgElem = document.createElement('img');
+    imgElem.setAttribute('alt', 'My Photo');
+    imgElem.src = imgSrc;
 
-    callback = (error) => {
-        if(error){
-            console.log(error);
-            return;
-        }
+    const containerElem  = document.querySelector('.page');
+    containerElem.append(imgElem);
+
+    const onImageLoaded = () => {
+        const { width, height } = imgElem;
+        callback(null, { width, height });
     };
-    const onImageLoaded = () => callback(null, { width: 200, height: 100 });
-    imgElem.addEventListener('load', onImageLoaded);
-    
-    imgElem.addEventListener('error', () => callback('Image load failed'));
 
+    imgElem.addEventListener('load', onImageLoaded);
+    imgElem.addEventListener('error', () =>  callback('Image load failed'));
 };
 
-//const imgSrc = 'https://a.wattpad.com/cover/84608722-352-k886345.jpg';
+
+const imgSrc = 'https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg';
+
+//callack example
+const onImageLoaded = (error, imgElem) => {
+    if (error) {
+        console.log(error);
+        return;
+    }
+    const { width, height } = imgElem;
+    const sizeElem = document.querySelector('.image-size');
+    sizeElem.textContent = `${width} x ${height}`;
+}
+
+addImage(imgSrc, onImageLoaded);
+
