@@ -22,6 +22,8 @@ export const addImage = imgSrc => {
 const imgSrc = 'https://gromcode.s3.eu-central-1.amazonaws.com/front-end/html-css/lesson15/task1/big.jpeg';
 
 const resultPromise = addImage(imgSrc);
+console.log(resultPromise);
+
 resultPromise.then((data) => { console.log(data) });
 
 resultPromise.catch(error => console.log(error));
