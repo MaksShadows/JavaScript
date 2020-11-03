@@ -23,6 +23,6 @@ const imgSrc = 'https://gromcode.s3.eu-central-1.amazonaws.com/front-end/html-cs
 
 const resultPromise = addImage(imgSrc);
 console.log(resultPromise);
-resultPromise.then((data) => { console.log(data) });
+//resultPromise.then((data) => { console.log(data) });
 
 resultPromise.catch((error) => { console.log(error) });
