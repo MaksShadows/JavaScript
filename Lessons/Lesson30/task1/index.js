@@ -26,4 +26,4 @@ console.log(resultPromise);
 
 resultPromise.then((data) => { console.log(data) });
 
-resultPromise.catch(error => console.log(error));
+resultPromise.catch((error) => { console.log(error) });
